@@ -52,10 +52,10 @@
 #define Y_DIAG_PIN                          PG9   // Y-STOP
 #define Z_DIAG_PIN                          PG10  // Z-STOP
 #define Z2_DIAG_PIN                         PG11  // Z2-STOP
-#define E0_DIAG_PIN                         PG12  // E0DET
-#define E1_DIAG_PIN                         PG13  // E1DET
-#define E2_DIAG_PIN                         PG14  // E2DET
-#define E3_DIAG_PIN                         PG15  // E3DET
+#define Z3_DIAG_PIN                         PG12  // E0DET    // edited by Developium 
+#define Z4_DIAG_PIN                         PG13  // E1DET    // edited by Developium 
+#define E0_DIAG_PIN                         PG14  // E2DET    // edited by Developium 
+#define E1_DIAG_PIN                         PG15  // E3DET    // edited by Developium 
 
 //
 // Z Probe (when not Z_MIN_PIN)
@@ -165,7 +165,7 @@
 #endif
 
 //
-// Steppers
+// Steppers  // edited by Developium 
 //
 #define X_STEP_PIN                          PF13  // MOTOR 0
 #define X_DIR_PIN                           PF12
@@ -195,33 +195,33 @@
   #define Z2_CS_PIN                         PC7
 #endif
 
-#define E0_STEP_PIN                         PF9   // MOTOR 4
-#define E0_DIR_PIN                          PF10
-#define E0_ENABLE_PIN                       PG2
+#define Z3_STEP_PIN                         PF9   // MOTOR 4
+#define Z3_DIR_PIN                          PF10
+#define Z3_ENABLE_PIN                       PG2
+#ifndef Z3_CS_PIN
+  #define Z3_CS_PIN                         PF2
+#endif
+
+#define Z4_STEP_PIN                         PC13  // MOTOR 5
+#define Z4_DIR_PIN                          PF0
+#define Z4_ENABLE_PIN                       PF1
+#ifndef Z4_CS_PIN
+  #define Z4_CS_PIN                         PE4
+#endif
+
+#define E0_STEP_PIN                         PE2   // MOTOR 6
+#define E0_DIR_PIN                          PE3
+#define E0_ENABLE_PIN                       PD4
 #ifndef E0_CS_PIN
-  #define E0_CS_PIN                         PF2
+
+  #define E0_CS_PIN                         PE1
 #endif
 
-#define E1_STEP_PIN                         PC13  // MOTOR 5
-#define E1_DIR_PIN                          PF0
-#define E1_ENABLE_PIN                       PF1
+#define E1_STEP_PIN                         PE6   // MOTOR 7
+#define E1_DIR_PIN                          PA14
+#define E1_ENABLE_PIN                       PE0
 #ifndef E1_CS_PIN
-  #define E1_CS_PIN                         PE4
-#endif
-
-#define E2_STEP_PIN                         PE2   // MOTOR 6
-#define E2_DIR_PIN                          PE3
-#define E2_ENABLE_PIN                       PD4
-#ifndef E2_CS_PIN
-
-  #define E2_CS_PIN                         PE1
-#endif
-
-#define E3_STEP_PIN                         PE6   // MOTOR 7
-#define E3_DIR_PIN                          PA14
-#define E3_ENABLE_PIN                       PE0
-#ifndef E3_CS_PIN
-  #define E3_CS_PIN                         PD3
+  #define E1_CS_PIN                         PD3
 #endif
 
 //
@@ -286,12 +286,12 @@
   //#define Y_HARDWARE_SERIAL  Serial1
   //#define Y2_HARDWARE_SERIAL Serial1
   //#define Z_HARDWARE_SERIAL  Serial1
-  //#define Z2_HARDWARE_SERIAL Serial1
-  //#define E0_HARDWARE_SERIAL Serial1
-  //#define E1_HARDWARE_SERIAL Serial1
-  //#define E2_HARDWARE_SERIAL Serial1
-  //#define E3_HARDWARE_SERIAL Serial1
-  //#define E4_HARDWARE_SERIAL Serial1
+  //#define Z2_HARDWARE_SERIAL Serial1  // edited by Developium 
+  //#define E0_HARDWARE_SERIAL Serial1  // edited by Developium 
+  //#define E1_HARDWARE_SERIAL Serial1  // edited by Developium 
+  //#define E2_HARDWARE_SERIAL Serial1  // edited by Developium 
+  //#define E3_HARDWARE_SERIAL Serial1  // edited by Developium 
+  //#define E4_HARDWARE_SERIAL Serial1  // edited by Developium 
 
   #define X_SERIAL_TX_PIN                   PC4
   #define X_SERIAL_RX_PIN        X_SERIAL_TX_PIN
@@ -305,17 +305,17 @@
   #define Z2_SERIAL_TX_PIN                  PC7
   #define Z2_SERIAL_RX_PIN      Z2_SERIAL_TX_PIN
 
-  #define E0_SERIAL_TX_PIN                  PF2
+  #define Z3_SERIAL_TX_PIN                  PF2
+  #define Z3_SERIAL_RX_PIN      Z3_SERIAL_TX_PIN
+
+  #define Z4_SERIAL_TX_PIN                  PE4
+  #define Z4_SERIAL_RX_PIN      Z4_SERIAL_TX_PIN
+
+  #define E0_SERIAL_TX_PIN                  PE1
   #define E0_SERIAL_RX_PIN      E0_SERIAL_TX_PIN
 
-  #define E1_SERIAL_TX_PIN                  PE4
+  #define E1_SERIAL_TX_PIN                  PD3
   #define E1_SERIAL_RX_PIN      E1_SERIAL_TX_PIN
-
-  #define E2_SERIAL_TX_PIN                  PE1
-  #define E2_SERIAL_RX_PIN      E2_SERIAL_TX_PIN
-
-  #define E3_SERIAL_TX_PIN                  PD3
-  #define E3_SERIAL_RX_PIN      E3_SERIAL_TX_PIN
 
   // Reduce baud rate to improve software serial reliability
   #define TMC_BAUD_RATE                    19200
