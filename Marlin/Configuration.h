@@ -64,6 +64,12 @@
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
+ * Developiums Definitions and constants
+ * 
+ */
+#define SAFE_VIAL_HEIGHT 120        // the safe height above the vials // add & edited by Developium 
+#define HAS_FILLING_MACHINE_MENU  true  // Add Filling machine menu        // add & edited by Developium 
+/**
  * *** VENDORS PLEASE READ ***
  *
  * Marlin allows you to add a custom boot image for Graphical LCDs.
@@ -823,14 +829,14 @@
  *
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
-// #define PREVENT_COLD_EXTRUSION    // edited by Developium
+// #define PREVENT_COLD_EXTRUSION    // edited by Developium (enabled)
 #define EXTRUDE_MINTEMP 170
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
  * Note: For Bowden Extruders make this large enough to allow load/unload.
  */
-// #define PREVENT_LENGTHY_EXTRUDE   // edited by Developium
+// #define PREVENT_LENGTHY_EXTRUDE   // edited by Developium  (enabled)
 #define EXTRUDE_MAXLENGTH 200
 
 //===========================================================================
@@ -851,10 +857,10 @@
  */
 
 
-// #define THERMAL_PROTECTION_HOTENDS // Enable thermal protection for all extruders        // edited by Developium
-// #define THERMAL_PROTECTION_BED     // Enable thermal protection for the heated bed       // edited by Developium
-// #define THERMAL_PROTECTION_CHAMBER // Enable thermal protection for the heated chamber   // edited by Developium
-// #define THERMAL_PROTECTION_COOLER  // Enable thermal protection for the laser cooling    // edited by Developium
+// #define THERMAL_PROTECTION_HOTENDS // Enable thermal protection for all extruders        // edited by Developium (enabled)
+// #define THERMAL_PROTECTION_BED     // Enable thermal protection for the heated bed       // edited by Developium (enabled)
+// #define THERMAL_PROTECTION_CHAMBER // Enable thermal protection for the heated chamber   // edited by Developium (enabled)
+// #define THERMAL_PROTECTION_COOLER  // Enable thermal protection for the laser cooling    // edited by Developium (enabled)
 
 //===========================================================================
 //============================= Mechanical Settings =========================
@@ -864,7 +870,7 @@
 
 // Enable one of the options below for CoreXY, CoreXZ, or CoreYZ kinematics,
 // either in the usual order or reversed
-#define COREXY    // edited by Developium
+#define COREXY    // edited by Developium (disabled)
 //#define COREXZ
 //#define COREYZ
 //#define COREYX
@@ -1033,8 +1039,8 @@
 // Specify here all the endstop connectors that are connected to any endstop or probe.
 // Almost all printers will be using one per axis. Probes will use one or more of the
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
-// #define USE_XMIN_PLUG   // edited by Developium
-// #define USE_YMIN_PLUG   // edited by Developium
+// #define USE_XMIN_PLUG   // edited by Developium (enabled)
+// #define USE_YMIN_PLUG   // edited by Developium (enabled)
 #define USE_ZMIN_PLUG
 //#define USE_IMIN_PLUG
 //#define USE_JMIN_PLUG
@@ -1042,8 +1048,8 @@
 //#define USE_UMIN_PLUG
 //#define USE_VMIN_PLUG
 //#define USE_WMIN_PLUG
-#define USE_XMAX_PLUG     // edited by Developium
-#define USE_YMAX_PLUG     // edited by Developium
+#define USE_XMAX_PLUG     // edited by Developium (disabled)
+#define USE_YMAX_PLUG     // edited by Developium (disabled)
 //#define USE_ZMAX_PLUG
 //#define USE_IMAX_PLUG
 //#define USE_JMAX_PLUG
@@ -1176,7 +1182,7 @@
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 150, 150, 35, 75 } // edited by Developium { 300, 300, 5, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 35, 75 } // edited by Developium { 300, 300, 5, 25 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1189,7 +1195,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 6000, 6000, 500, 10000 } // edited by Developium { 3000, 3000, 100, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 500, 10000 } // edited by Developium { 3000, 3000, 100, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1204,9 +1210,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          5000    // X, Y, Z and E acceleration for printing moves          // edited by Developium 
-#define DEFAULT_RETRACT_ACCELERATION  5000    // E acceleration for retracts                            // edited by Developium 
-#define DEFAULT_TRAVEL_ACCELERATION   5000    // X, Y, Z acceleration for travel (non printing) moves   // edited by Developium 
+#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves          // edited by Developium 
+#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts                            // edited by Developium 
+#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves   // edited by Developium 
 
 /**
  * Default Jerk limits (mm/s)
@@ -1488,16 +1494,16 @@
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 30 // edited by Developium (10)
+#define PROBING_MARGIN 0 // edited by Developium (10)
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_FEEDRATE (150*60)  // edited by Developium (133*60)
+#define XY_PROBE_FEEDRATE (60*60)  // edited by Developium (133*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-#define Z_PROBE_FEEDRATE_FAST (20*60)   // edited by Developium (4*60)
+#define Z_PROBE_FEEDRATE_FAST (10*60)   // edited by Developium (4*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
-#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 10) // edited by Developium (Z_PROBE_FEEDRATE_FAST / 2)
+#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 6) // edited by Developium (Z_PROBE_FEEDRATE_FAST / 2)
 
 /**
  * Probe Activation Switch
@@ -1573,7 +1579,7 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
-#define Z_MIN_PROBE_REPEATABILITY_TEST    // edited by Developium 
+#define Z_MIN_PROBE_REPEATABILITY_TEST    // edited by Developium (disabled)
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW
@@ -1675,8 +1681,7 @@
  */
 //#define Z_IDLE_HEIGHT Z_HOME_POS
 
-#define SAFE_VIAL_HEIGHT 120     // the safe height above the vials // add & edited by Developium 
-#define Z_HOMING_HEIGHT  SAFE_VIAL_HEIGHT   // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ... // edited by Developium 
+#define Z_HOMING_HEIGHT  4   // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ... // edited by Developium  (4) SAFE_VIAL_HEIGHT!! fixme
                                   // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
 
 #define Z_AFTER_HOMING  SAFE_VIAL_HEIGHT      // (mm) Height to move to after homing Z  // edited by Developium 
@@ -1874,10 +1879,10 @@
  *   With an LCD controller the process is guided step-by-step.
  */
 //#define AUTO_BED_LEVELING_3POINT
-#define AUTO_BED_LEVELING_LINEAR      // edited by Developium 
+// #define AUTO_BED_LEVELING_LINEAR          // edited by Developium (disabled)
 //#define AUTO_BED_LEVELING_BILINEAR
-//#define AUTO_BED_LEVELING_UBL
-//#define MESH_BED_LEVELING
+#define AUTO_BED_LEVELING_UBL                 // edited by Developium (disabled)
+// #define MESH_BED_LEVELING                 
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
@@ -1987,8 +1992,8 @@
 
   //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
-  #define MESH_INSET 1              // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
+  #define MESH_INSET 30            // Set Mesh bounds as an inset region of the bed  // edited by developium (1)
+  #define GRID_MAX_POINTS_X 8      // Don't use more than 15 points per axis, implementation limited. // edited by developium (10)
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define UBL_HILBERT_CURVE       // Use Hilbert distribution for less travel when probing multiple points
@@ -2092,7 +2097,7 @@
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
-#define Z_SAFE_HOMING   // edited by Developium 
+#define Z_SAFE_HOMING   // edited by Developium
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT X_BED_SIZE  // X point for Z homing // edited by Developium   X_CENTER
@@ -2100,7 +2105,7 @@
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
-#define HOMING_FEEDRATE_MM_M { (100*60), (100*60), (20*60) } // edited by Developium  { (50*60), (50*60), (4*60) }
+#define HOMING_FEEDRATE_MM_M { (70*60), (70*60), (10*60) } // edited by Developium  { (50*60), (50*60), (4*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -2241,7 +2246,7 @@
  *    P1  Raise the nozzle always to Z-park height.
  *    P2  Raise the nozzle by Z-park amount, limited to Z_MAX_POS.
  */
-#define NOZZLE_PARK_FEATURE   // edited by Developium 
+// #define NOZZLE_PARK_FEATURE   // edited by Developium  (disabled)
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
@@ -2463,7 +2468,7 @@
  * SD Card support is disabled by default. If your controller has an SD slot,
  * you must uncomment the following option or it won't work.
  */
-#define SDSUPPORT   // edited by Developium
+#define SDSUPPORT   // edited by Developium (disabled)
 
 /**
  * SD CARD: ENABLE CRC
@@ -2552,7 +2557,7 @@
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-#define SPEAKER // edited by Developium TRYME
+#define SPEAKER // edited by Developium 
 
 //
 // The duration and frequency for the UI feedback sound.
@@ -3218,14 +3223,14 @@
 // Use software PWM to drive the fan, as for the heaters. This uses a very low frequency
 // which is not as annoying as with the hardware PWM. On the other hand, if this frequency
 // is too low, you should also increment SOFT_PWM_SCALE.
-// #define FAN_SOFT_PWM    // edited by Developium
+// #define FAN_SOFT_PWM    // edited by Developium (disabled)
 
 // Incrementing this by 1 will double the software PWM frequency,
 // affecting heaters, and the fan if FAN_SOFT_PWM is enabled.
 // However, control resolution will be halved for each increment;
 // at zero value, there are 128 effective control positions.
 // :[0,1,2,3,4,5,6,7]
-// #define SOFT_PWM_SCALE 0    // edited by Developium 0
+// #define SOFT_PWM_SCALE 0    // edited by Developium (disabled) (0)
 
 // If SOFT_PWM_SCALE is set to a value higher than 0, dithering can
 // be used to mitigate the associated resolution loss. If enabled,

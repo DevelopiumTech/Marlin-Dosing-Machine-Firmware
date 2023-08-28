@@ -66,6 +66,13 @@
   #include "../../feature/repeat.h"
 #endif
 
+#if HAS_FILLING_MACHINE_MENU  // added and edited by developium
+  namespace Language_en {  
+      LSTR MSG_FILLING_MACHINE_MENU           = _UxGT("Filling Machine");
+  }
+  void menu_filling_machine();
+#endif
+
 void menu_tune();
 void menu_cancelobject();
 void menu_motion();
@@ -232,6 +239,7 @@ void menu_configuration();
   #endif
 #endif
 
+
 void menu_main() {
   const bool busy = printingIsActive()
     #if ENABLED(SDSUPPORT)
@@ -242,6 +250,10 @@ void menu_main() {
 
   START_MENU();
   BACK_ITEM(MSG_INFO_SCREEN);
+  
+  #if HAS_FILLING_MACHINE_MENU    // added and edited by developium
+    SUBMENU(MSG_FILLING_MACHINE_MENU, menu_filling_machine);
+  #endif
 
   #if ENABLED(SDSUPPORT)
 
